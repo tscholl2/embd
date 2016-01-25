@@ -11,7 +11,15 @@ import (
 
 func main() {
 	var pkg, name string
-	flag.StringVar(&name, "n", "", "(optional) name of the variable to generate (default <filename>)")
+	flag.CommandLine.Usage = func() {
+		fmt.Println(`embed a file into go source code
+Example: 'embd a.sql' creates a.sql.go which declares
+a variable 'a' to be the contents of the sql file.
+Example: 'embd -p foo a.sql' creates a.sql.go in package foo.
+Options:`)
+		flag.CommandLine.PrintDefaults()
+	}
+	flag.StringVar(&name, "n", "", "name of the variable to generate (default <filename>)")
 	flag.StringVar(&pkg, "p", "main", "name of package for file")
 	flag.Parse()
 	file := flag.Arg(0)
