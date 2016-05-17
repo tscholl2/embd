@@ -15,7 +15,7 @@ $ embd --help
   Example: 'embd a.sql -n foo' creates a.sql.go with 'const foo = ...'
   Options:
     -n string
-      	name of the variable to generate (default <filename>)
+        name of the variable to generate (default <filename>)
 ```
 
 # More
